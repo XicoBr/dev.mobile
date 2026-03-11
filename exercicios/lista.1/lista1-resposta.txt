@@ -1,0 +1,143 @@
+ex 01
+
+void main() 
+{
+  int idade = 11;
+  double altura = 1.82;
+  String nome = "Joao";
+  
+  bool maiorDeIdade = false;
+  
+  exibirInformacoes(nome, idade, altura);
+  if(idade >= 18)
+  {
+    maiorDeIdade = true;    
+  }
+  if(maiorDeIdade)
+  {
+    print("Maior de idade: Sim");
+    return;
+  }
+  print("Maior de idade: Não");
+  
+}
+
+
+void exibirInformacoes(String nome, int idade, double altura)
+{
+  print("Nome: $nome\nIdade: $idade\nAltura: $altura");
+  
+}
+
+
+ex 02
+
+import 'dart:io';
+
+void main() 
+{
+  print("Nome: ");
+  String nome = stdin.readLineSync()!;
+  
+  
+  print("Idade: ");
+  int idade = int.parse(stdin.readLineSync()!);
+  
+  print("Altura: "); 
+  double altura = double.parse(stdin.readLineSync()!);
+  
+  bool maiorDeIdade = false;
+  
+  print("\n-=-=-=-=-=-=-=-=-=-=-\n");
+  exibirInformacoes(nome, idade, altura);
+  if(idade >= 18)
+  {
+    maiorDeIdade = true;    
+  }
+  if(maiorDeIdade)
+  {
+    print("Maior de idade: Sim");
+    return;
+  }
+  print("Maior de idade: Não");
+  
+}
+
+
+void exibirInformacoes(String nome, int idade, double altura)
+{
+  print("Nome: $nome\nIdade: $idade\nAltura: $altura");
+  
+}
+
+
+ex 03
+
+
+import 'dart:io';
+
+void main()
+{
+  Map<int, int> pesquisa = new Map();
+  const contador = 20;
+  int idade = 0;
+  int nota = 0;
+  
+  int totExc = 0;
+  int idadeExc = 0;
+  double mediaIdadeExc = 0;
+  
+  int totReg = 0;
+  int totBom = 0;
+  double bomPerc = 0;
+  
+  for (int i = 0; i < contador; i++)
+  {
+    print("Idade: ");
+    idade = int.parse(stdin.readLineSync()!);
+    
+    print("Nota [1-ruim a $contador-excelente]");
+    nota = int.parse(stdin.readLineSync()!);
+    
+    pesquisa[idade] = nota;
+    if (nota == 3)
+    {
+      totExc++;
+      idadeExc += idade;
+    }
+    else if (nota == 1)
+    {
+      totReg++;      
+    }
+    else
+    {
+      totBom++;
+    }   
+    
+  }
+  mediaIdadeExc = idadeExc / totExc;
+  print("Media de idades de pessoas que responderam 'excelente': $mediaIdadeExc");
+  
+  print("Quantidade de pessoas que responderam 'regular': $totReg");
+  
+  bomPerc = (totBom / contador) * 100;
+  String formatPorc = bomPerc.toStringAsFixed(0);
+  print("Porcentagem de pessoas entrevistadas que responderam 'bom': $formatPorc%");
+}
+
+
+ex 04
+
+Criar um programa Dart que ajude o DETRAN a saber o total de recursos que foram arrecadados com a aplicação de multas de transito. O programa deve ler as seguintes informações para cada motorista:
+
+
+
+       • Número da carteira de motorista (de 1 a 4327)
+
+       • Número de multas
+
+       • Valor de cada uma das multas
+
+      • Deve ser impresso o valor da dívida para cada motorista e ao final de leitura, o total de recursos arrecadados (somatório de todas as multas). O algoritmo deverá imprimir também o número da careteira de motorista que obteve o maior número de multas.
+
+     • A condição de parada é quando o usuário digitar um valor para a carteira de motorista menor que 1 ou maior que 4327.

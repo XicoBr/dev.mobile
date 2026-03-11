@@ -1,0 +1,162 @@
+ex 1
+
+
+void main() 
+{
+	dynamic informacao;
+	informacao = "Coca-Cola";  
+	print("Nome do produto: $informacao");
+	
+	informacao = 5.5;
+	print("Valor do produto: $informacao");
+	
+	informacao = 50;
+	print("Quantidade em estoque: $informacao");
+}
+
+ex 2
+void main()
+{
+	const PI = 3.14;
+	int raio = 4;
+	double areaCirculo = PI * (raio ^ 2);
+	
+	print("O tamanho da área do círculo é $areaCirculo");
+}
+
+ex 3
+
+import 'dart:io';
+
+void main() {
+	int x = 2;
+	int y = 3;
+	
+	int soma = x + y;
+	
+	print("O resultado da soma de $x + $y é $soma");
+}
+
+ex 4
+
+import 'dart:io';
+
+void main() {
+	int numero = 8;
+	numero = -(numero);
+	
+	print(numero);
+}
+
+
+ex 5
+
+void main() {
+	int alunos = 25;
+	int grupos = 4;
+	
+	int divisao = alunos ~/ grupos;
+	
+	print(divisao);
+}
+
+/
+ex 6
+
+void main() {
+	int idade = 16;
+	
+	if (idade < 18)
+	{
+		print("Entrada proibida");
+		return;
+	}
+	print("Entrada liberada");
+}
+
+
+ex 7
+
+void main() {
+	int dia = 8;
+	
+	switch(dia)
+	{
+		case 1:
+			print("Segunda-feira");
+			break;
+			
+		case 2:
+			print("Terça-feira");
+			break;
+			
+		case 3:
+			print("Quarta-feira");
+			break;
+			
+		case 4:
+			print("Quinta-feira");
+			
+		case 5:
+			print("Sexta-feira");
+			break;
+			
+		case 6:
+			print("Sábado");
+			break;
+			
+		case 7:
+			print("Domingo");
+			break;
+			
+		default:
+			print("Numero inválido");
+	}
+}
+
+ex 8 
+
+void main()
+{
+	int soma = 0;
+	int cont = 0;
+	
+	for (cont; cont <= 10; cont++)
+	{
+		soma += cont;
+	}
+	
+	print(soma);
+}
+
+ex 8.1
+
+void main()
+{
+	int soma = 0;
+	int cont = 0;
+	do 
+	{
+		soma += cont;
+		cont++;
+	} while(cont <= 10);
+	
+	print(soma);
+}
+
+ex 9 
+
+import 'dart:io';
+
+void main() 
+{
+	
+	List<double> notas = [5.5, 7.5, 8.0, 9.0, 4.5];
+	
+	int i = 0;
+	for (double nota in notas)
+	{
+		print("Aluno: ${i + 1} ------- $nota");
+		i++;
+	}
+}
