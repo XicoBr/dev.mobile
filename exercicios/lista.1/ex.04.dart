@@ -1,46 +1,68 @@
-import 'dart:ffi';
 import 'dart:io';
 
 
 void main()
 {
-    int novo_id = 0;
-    List<int> id_motorista = [];
-    Map<int, double> multas = {};
-    String set_id_motorista; 
-  
-  do {
+    Map<int, List<double>> motoristas = new Map();
+    int idMotorista = 0;
+    double valorMulta = 0;
+    double totalArrecadado = 0;
+    int motoristaMaisMultas = 0;
+    int maiorQuantidade = 0;
+
+
+    do {
+      print("-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+      print("Digite o número: ");
+      idMotorista = int.parse(stdin.readLineSync()!);
+      print("-=-=-=-=-=-=-=-=-=-=-=-=-=-\n");
+
+    if(idMotorista < 1 || idMotorista > 4327)
+    {      
+      break;
+    }
+
+    // crio o motorista se não existir previamente na lista
+      if (!motoristas.containsKey(idMotorista))
+      {
+        motoristas[idMotorista] = [];
+      }
+      print("ID MOTORISTA: $idMotorista");
+      print("-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+      print("Valor da multa: \r");
+      valorMulta = double.parse(stdin.readLineSync()!);
+
+      motoristas[idMotorista]!.add(valorMulta);
+
+    } while (true);
+    print("-=-=-=-=-=-=-=-=-=-=-=-=-=-");
     
-
-    print("Id motorista: ");
-    novo_id = int.parse(stdin.readLineSync()!);
-
-    if (novo_id == 0)
+    motoristas.forEach((id, multa) 
     {
-      print("Saindo do programa.");
-      continue;
-      
-    }
-    if ((novo_id < 1 && novo_id != 0) || novo_id > 4327)
-    {
-      print("Numero de carteira inválido! Por favor, tente novamente.");
-      continue;
-    }
+      int totMultas = multa.length;
+      double soma = 0;
+
+      if(totMultas > maiorQuantidade)
+      {
+        maiorQuantidade = totMultas;
+        motoristaMaisMultas = id;
+      }
+
+      print("Id motorista: $id\nMulta: $multa");
+      print("Total de Multas: $totMultas");
+
+      // usando o .reduce() para reduzir a minha coleção à soma dos valores pertencentes a ela. Esta é uma função anônima (=>)
+      if(multa.isNotEmpty)
+      {
+        soma = multa.reduce((a, b) => a + b);
+        totalArrecadado += soma;
+      }
+      print("Valor total a ser pago: R\$$soma");
+      print("-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+
+    });
+      print("Total arrecadado: R\$ $totalArrecadado");
+      print("ID motorista com mais multas: $motoristaMaisMultas\ttotal: $maiorQuantidade");
+
     
-    if(id_motorista.contains(novo_id))
-    {
-      print("Id existente! Tente novamente.");
-      continue;
-    }
-    id_motorista.add(novo_id);
-
-  } while(novo_id >= 1 && novo_id <= 4327);
-
-  int tamanhoLista = id_motorista.length;
-
-  for (int numId in id_motorista){
-    print("Id: $numId");
-  }
-  print("Total id: $tamanhoLista");
-
 }
